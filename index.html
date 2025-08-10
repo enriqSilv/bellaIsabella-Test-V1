@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Isabella - Assistente Virtual</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+<style>
+    /* ============================================= */
+    /* ==  1. PERSONALIZAÇÃO DO CHATBOT N8N (CORES) == */
+    /* ============================================= */
+    :root {
+        /* Cor primária (botão de abrir o chat) */
+        --chat--color-primary: #ff007f;
+        --chat--toggle--background: var(--chat--color-primary);
+        --chat--toggle--hover--background: #e60072; /* Tom mais escuro ao passar o mouse */
+
+        /* Cabeçalho do Chat */
+        --chat--header--background: #ff007f;
+        --chat--header--color: #ffffff; /* Cor de todo o texto no cabeçalho (título e subtítulo) */
+
+        /* Balão de Mensagem do Usuário (Sua Mensagem) */
+        --chat--message--user--background: #ff007f; /* Fundo Rosa */
+        --chat--message--user--color: #ffffff;      /* Fonte Branca */
+
+        /* Balão de Mensagem do Bot (Bella) */
+        --chat--message--bot--background: #f1f1f1;  /* Fundo Cinza Claro */
+        --chat--message--bot--color: #1c1c1c;       /* Fonte Escura */
+    }
+
+    /* ============================================= */
+    /* ==      2. ESTILOS DA PÁGINA PRINCIPAL     == */
+    /* ============================================= */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .container {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        max-width: 500px;
+        width: 100%;
+    }
+    .logo {
+        max-width: 250px;
+        height: auto;
+        margin-bottom: 25px;
+    }
+    h1 {
+        font-size: 2em;
+        color: #1c1c1c;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 1.1em;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+    p strong {
+        color: #ff007f; /* Destaque em rosa para o nome "Bella" */
+    }
+    footer {
+        margin-top: 30px;
+        font-size: 0.9em;
+        color: #888;
+    }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <img src="Img/Img.jpg" alt="Logo Bella Isabella Moda Íntima" class="logo">
+        </header>
+        <main>
+            <h1>Bem-vinda!</h1>
+            <p>
+                Converse com a <strong>Bella</strong>, nossa assistente virtual, para registrar suas vendas e consultar seus resultados. Inicie uma conversa no chat abaixo!
+            </p>
+        </main>
+        <footer>
+            <p>&copy; 2025 Bella Isabella Moda Intima</p>
+        </footer>
+    </div>
+
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            // 👇 Não se esqueça de colocar sua URL de produção aqui
+            webhookUrl: 'https://bellaisabella.app.n8n.cloud/webhook/9c53a388-6138-4c02-b570-ca86292a7a1c/chat',
+        
+            // Textos da interface do chat
+            i18n: {
+                en: {
+                    title: 'Converse com a Bella',
+                    subtitle: 'Sua assistente financeira para o que precisar.',
+                    inputPlaceholder: 'Digite sua mensagem para a Bella...',
+            }
+        },
+
+        // AQUI ESTÁ A CORREÇÃO:
+        // Trocamos o antigo "welcome" pela propriedade "initialMessages"
+        // que aceita uma lista de mensagens.
+            initialMessages: [
+                'Olá! 👋',
+                'Sou a Bella, sua assistente. Pronta para registrar uma venda ou consultar seus totais!'
+            ]
+        });
+    </script>
+
+</body>
+</html>
